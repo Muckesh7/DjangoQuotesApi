@@ -22,12 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ciust%(1s-hkx3s1#$$87k0vt*l4=x$#dhbd2c(=&eo)_jbf%5'
 
+with open(os.path.join(BASE_DIR, 'secret_key.txt')) as file:
+    SECRET_KEY = file.read().strip()
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['mr-robot-quotes.herokuapp.com']
 
 
 # Application definition
@@ -135,6 +136,14 @@ CLOUDINARY_STORAGE = {
     'API_KEY': "859213653283142",
     'API_SECRET': "CEUtBYJUXMZIO6jwS_bhyXCAV6g"
 }
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+
+SECURE_HSTS_SECONDS = 3153600000
+SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 django_heroku.settings(locals())
 

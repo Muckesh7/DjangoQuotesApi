@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('quotes-api/', include('app.urls')),
-    path('admin/', admin.site.urls),
+    path('$$mrrobotquotesapiadmin$$/', admin.site.urls),
 ]
